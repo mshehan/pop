@@ -529,7 +529,7 @@ static void stopAndCleanup(POPAnimator *self, POPAnimatorItemRef item, bool shou
     pthread_mutex_unlock(&_lock);
   } else {
     // copy list into vector
-    std::vector<POPAnimatorItemRef> vector{ items.begin(), items.end() };
+    std::vector<POPAnimatorItemRef> vector(items.begin(), items.end());
 
     // unlock
     pthread_mutex_unlock(&_lock);
@@ -869,7 +869,7 @@ static void stopAndCleanup(POPAnimator *self, POPAnimatorItemRef item, bool shou
 
 - (void)addObserver:(id<POPAnimatorObserving>)observer
 {
-  NSAssert(nil != observer, @"attempting to add nil %@ observer", self);
+  NSAssert1(nil != observer, @"attempting to add nil %@ observer", self);
   if (nil == observer) {
     return;
   }
@@ -891,7 +891,7 @@ static void stopAndCleanup(POPAnimator *self, POPAnimatorItemRef item, bool shou
 
 - (void)removeObserver:(id<POPAnimatorObserving>)observer
 {
-  NSAssert(nil != observer, @"attempting to remove nil %@ observer", self);
+  NSAssert1(nil != observer, @"attempting to remove nil %@ observer", self);
   if (nil == observer) {
     return;
   }

@@ -30,7 +30,7 @@ static void interpolate(POPValueType valueType, NSUInteger count, const CGFloat 
       POPInterpolateVector(count, outVec, fromVec, toVec, p);
       break;
     default:
-      NSCAssert(false, @"unhandled type %d", valueType);
+      NSCAssert1(false, @"unhandled type %d", valueType);
       break;
   }
 }
@@ -38,13 +38,13 @@ static void interpolate(POPValueType valueType, NSUInteger count, const CGFloat 
 struct _POPBasicAnimationState : _POPPropertyAnimationState
 {
   CAMediaTimingFunction *timingFunction;
-  double timingControlPoints[4];
+  double timingControlPoints[4] = {0.};
   CFTimeInterval duration;
   CFTimeInterval timeProgress;
 
   _POPBasicAnimationState(id __unsafe_unretained anim) : _POPPropertyAnimationState(anim),
   timingFunction(nil),
-  timingControlPoints{0.},
+  timingControlPoints(),
   duration(kPOPAnimationDurationDefault),
   timeProgress(0.)
   {

@@ -116,7 +116,7 @@ namespace POP
 
     Vector *v = new Vector(count);
 
-    NSCAssert(count <= 4, @"unexpected count %lu", (unsigned long)count);
+    NSCAssert1(count <= 4, @"unexpected count %lu", (unsigned long)count);
     for (NSUInteger i = 0; i < MIN(count, (NSUInteger)4); i++) {
       v->_values[i] = vec[i];
     }
@@ -216,7 +216,7 @@ namespace POP
       return CGAffineTransformIdentity;
     }
 
-    NSCAssert(size() >= 6, @"unexpected vector size:%lu", (unsigned long)size());
+    NSCAssert1(size() >= 6, @"unexpected vector size:%lu", (unsigned long)size());
     CGAffineTransform t;
     t.a = _values[0];
     t.b = _values[1];
