@@ -18,3 +18,5 @@ DerivedData
 build
 
 .ruby-version
+
+.swiftpm
